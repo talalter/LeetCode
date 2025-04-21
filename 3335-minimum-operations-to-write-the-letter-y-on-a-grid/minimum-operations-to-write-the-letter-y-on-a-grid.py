@@ -4,14 +4,14 @@ class Solution:
         mid = n // 2
         y_values = [0, 0, 0]
         not_y_values = [0, 0, 0]
-
+        res = float('inf')
         for r in range(n):
             for c in range(n):
-                if (r == c and r <= mid) or (r + c == n - 1 and r <= mid) or (r > mid and c == mid):
+                if (r == c and r <= mid) or (r + c == n - 1 and r <= mid)or (r > mid and c == mid):
                     y_values[grid[r][c]] += 1
                 else:
                     not_y_values[grid[r][c]] += 1
-
+        
         total_y = sum(y_values)
         total_not_y = sum(not_y_values)
         res = float('inf')
