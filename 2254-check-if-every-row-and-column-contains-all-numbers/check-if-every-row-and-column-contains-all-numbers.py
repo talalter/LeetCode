@@ -29,7 +29,6 @@ class Solution:
                 matrix[val - 1][j] = -matrix[val - 1][j]
 
             # Restore the column
-            for i in range(n):
-                matrix[i][j] = abs(matrix[i][j])
+
 
         return True
