@@ -1,20 +1,35 @@
+from typing import List
+
 class Solution:
     def checkValid(self, matrix: List[List[int]]) -> bool:
         n = len(matrix)
-        for row in range(n):
-            row_set = [0] * n
-            col_set = [0] * n
-            for col in range(n):
-                row_val = matrix[row][col]
-                col_val = matrix[col][row]
-                if row_val < 1 or row_val > n or row_set[row_val-1] == 1:
-                    return False
-                if col_val < 1 or col_val > n or col_set[col_val-1] == 1:
-                    return False
-                row_set[row_val-1] = 1 
-                col_set[col_val-1] = 1
-        return True
-                
 
-     
+        # Check rows
+        for i in range(n):
+            for j in range(n):
+                val = abs(matrix[i][j])
+                # Out of range or already marked
+                if val < 1 or val > n or matrix[i][val - 1] < 0:
+                    return False
+                # Mark as visited by negating
+                matrix[i][val - 1] = -matrix[i][val - 1]
+
+            # Restore the row
+            for j in range(n):
+                matrix[i][j] = abs(matrix[i][j])
+
+        # Check columns
+        for j in range(n):
+            for i in range(n):
+                val = abs(matrix[i][j])
+                # Out of range or already marked
+                if val < 1 or val > n or matrix[val - 1][j] < 0:
+                    return False
+                # Mark as visited by negating
+                matrix[val - 1][j] = -matrix[val - 1][j]
+
+            # Restore the column
+            for i in range(n):
+                matrix[i][j] = abs(matrix[i][j])
+
         return True
