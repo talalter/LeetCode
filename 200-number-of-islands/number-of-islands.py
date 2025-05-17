@@ -15,8 +15,8 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == '1':
-                    dfs(r, c)
+                    
                     islands += 1
-
+                    dfs(r, c)
         return islands
         
