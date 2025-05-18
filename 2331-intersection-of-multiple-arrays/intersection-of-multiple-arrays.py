@@ -9,8 +9,4 @@ class Solution:
                 else:
                     counter[num] = 1
         
-        res = []
-        for num, amount in counter.items():
-            if amount == n:
-                res.append(num)
-        return sorted(res)            
+        return sorted([num for num, amount in counter.items() if amount == n])
