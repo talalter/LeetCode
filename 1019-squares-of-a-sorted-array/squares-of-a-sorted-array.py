@@ -6,11 +6,11 @@ class Solution:
         res = [0] * len(nums)
         idx = n
         while left <= right:
-            if abs(nums[left]) >= nums[right]:
-                res[idx] = abs(nums[left])**2
+            if abs(nums[left]) >= abs(nums[right]):
+                res[idx] = nums[left]**2
                 left += 1
             else:
-                res[idx] = abs(nums[right])**2
+                res[idx] = nums[right] ** 2
                 right -= 1  
             idx -= 1
         return res
