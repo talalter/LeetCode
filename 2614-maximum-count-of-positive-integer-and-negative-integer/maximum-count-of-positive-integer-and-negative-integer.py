@@ -24,8 +24,8 @@ class Solution:
                     right = mid - 1
             return -1
         neg = binary_search_negative(nums) + 1
-
-        pos_idx = binary_search_positive(nums)
-        pos = 0 if pos_idx == -1 else len(nums) - pos_idx  
-
-        return max(neg, pos)
+        pos = binary_search_positive(nums)
+        if pos == -1:
+            return neg
+        else:
+            return max(neg, len(nums)-pos)
